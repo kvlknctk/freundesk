@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "407906566078",
+    "firebase_url": "https://freundesk-740da.firebaseio.com",
+    "project_id": "freundesk-740da",
+    "storage_bucket": "freundesk-740da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407906566078:android:a6aa8ffdd1e1cfa9e703ef",
+        "android_client_info": {
+          "package_name": "com.codenra.freundesk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "407906566078-ufd8275bes65hf2i2cor4c6jsuhb1q9a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAceEU9-kFjKmZBOwWK06gPf8Xw46pVjtw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "407906566078-ufd8275bes65hf2i2cor4c6jsuhb1q9a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
