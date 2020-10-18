@@ -12,7 +12,17 @@ function goBack() {
   navigationRef.current?.goBack();
 }
 
+function push(name: string) {
+  navigationRef.current?.push(name);
+}
+
+function reset(name: string) {
+  navigationRef.current?.reset(name);
+}
+
 export default {
   navigate,
   goBack,
+  push,
+  reset
 };

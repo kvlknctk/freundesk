@@ -12,14 +12,16 @@ import ForgotPassword from 'app/screens/ForgotPassword';
 import ThemeController from '../components/ThemeController';
 import {StatusBar} from 'react-native';
 import {ILoginState} from 'app/models/reducers/login';
-import ReadBarcode from "../screens/ReadBarcode";
+import ReadBarcode from "../screens/Barcode/ReadBarcode";
+import BarcodeCompleted from "../screens/Barcode/BarcodeCompleted";
+import Products from "../screens/Product/Products";
 
 const Stack = createStackNavigator();
 const AuthStack = createStackNavigator();
 const LoggedInStack = createStackNavigator();
 
 const homeOptions = {
-    title: 'Home',
+    title: 'Freundeskreis',
     headerTitleStyle: {
         fontWeight: 'bold',
     },
@@ -70,6 +72,12 @@ const LoggedInNavigator = () => (
             // @ts-ignore
                       options={homeOptions}/>
         <Stack.Screen name="ReadBarcode" component={ReadBarcode}
+            // @ts-ignore
+                      options={homeOptions}/>
+        <Stack.Screen name="BarcodeCompleted" component={BarcodeCompleted}
+            // @ts-ignore
+                      options={homeOptions}/>
+        <Stack.Screen name="Products" component={Products}
             // @ts-ignore
                       options={homeOptions}/>
 
