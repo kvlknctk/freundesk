@@ -13,3 +13,8 @@ export function basketRemoveProduct(index: number) {
         index: index
     };
 }
+export function basketDrop() {
+    return {
+        type: types.BASKET_DROP_BASKET
+    };
+}
