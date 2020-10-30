@@ -15,6 +15,7 @@ import {ILoginState} from 'app/models/reducers/login';
 import ReadBarcode from "../screens/Barcode/ReadBarcode";
 import BarcodeCompleted from "../screens/Barcode/BarcodeCompleted";
 import Products from "../screens/Product/Products";
+import BasketList from "../screens/Basket/BasketList";
 
 const Stack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -69,6 +70,9 @@ const AuthNavigator = () => {
 const LoggedInNavigator = () => (
     <LoggedInStack.Navigator>
         <Stack.Screen name="Home" component={Home}
+            // @ts-ignore
+                      options={homeOptions}/>
+        <Stack.Screen name="Basket" component={BasketList}
             // @ts-ignore
                       options={homeOptions}/>
         <Stack.Screen name="ReadBarcode" component={ReadBarcode}
