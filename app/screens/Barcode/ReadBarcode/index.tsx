@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {View, Text, Alert, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import styles from './styles';
 import NavigationService from "../../../navigation/NavigationService";
 import * as sessionActions from "../../../store/actions/sessionActions";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 
 const ReadBarcode: React.FC = () => {
     const [read, setRead] = useState(false);

@@ -1,10 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-//import styles from './styles';
-//import AppStyles from "../../config/styles";
-//import NavigationService from "../../../navigation/NavigationService";
-//import {Button} from 'react-native-paper';
-//import * as basketActions from "../../store/actions/basketActions";
 import {useDispatch, useSelector} from "react-redux";
 import * as sessionActions from "../../store/actions/sessionActions";
 

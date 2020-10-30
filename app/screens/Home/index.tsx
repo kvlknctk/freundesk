@@ -1,15 +1,9 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-import {Button} from 'react-native-paper';
-
-import {useDispatch} from 'react-redux';
-import * as loginActions from 'app/store/actions/loginActions';
 import styles from './styles';
 import NavigationService from "../../navigation/NavigationService";
 
 const Home: React.FC = () => {
-    const dispatch = useDispatch();
-    const onLogout = () => dispatch(loginActions.logOut());
     const goBarcodeRead = () => NavigationService.navigate('ReadBarcode');
     const goActiveSession = () => NavigationService.navigate('Session');
 
@@ -20,8 +14,6 @@ const Home: React.FC = () => {
                        width: 300,
                        height: 200,
                        marginTop: 30
-                       //borderWidth: 1,
-                       //borderColor: 'white'
                    }}/>
             <View style={{alignItems: 'flex-start', marginTop: 15}}>
                 <TouchableOpacity onPress={() => goBarcodeRead()}>
