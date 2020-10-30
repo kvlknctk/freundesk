@@ -24,7 +24,6 @@ export const basketReducer = createReducer(initialState, {
     },
     [types.BASKET_REMOVE_PRODUCT](state: IProductState, action: IProductAction) {
         //console.log(types.BASKET_ADD_PRODUCT, action)
-        console.log(action.product);
         return {
             ...state,
             addedProducts: state.addedProducts.filter((item: any, index: number) => index !== action.index),
