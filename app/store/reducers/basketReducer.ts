@@ -11,7 +11,7 @@ const initialState: IProductState = {
 };
 
 interface IProductAction {
-    product: object;
+    index: number;
 }
 
 export const basketReducer = createReducer(initialState, {
@@ -20,6 +20,14 @@ export const basketReducer = createReducer(initialState, {
         return {
             ...state,
             addedProducts: state.addedProducts.concat(action.product)
+        };
+    },
+    [types.BASKET_REMOVE_PRODUCT](state: IProductState, action: IProductAction) {
+        //console.log(types.BASKET_ADD_PRODUCT, action)
+        console.log(action.product);
+        return {
+            ...state,
+            addedProducts: state.addedProducts.filter((item: any, index: number) => index !== action.index),
         };
     }
 });

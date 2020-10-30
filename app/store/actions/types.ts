@@ -14,3 +14,4 @@ export const LOG_OUT = 'LOG_OUT';
 
 // baskets
 export const BASKET_ADD_PRODUCT = 'BASKET_ADD_PRODUCT';
+export const BASKET_REMOVE_PRODUCT = 'BASKET_REMOVE_PRODUCT';
