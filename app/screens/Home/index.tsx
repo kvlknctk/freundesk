@@ -6,6 +6,7 @@ import NavigationService from "../../navigation/NavigationService";
 const Home: React.FC = () => {
     const goBarcodeRead = () => NavigationService.navigate('ReadBarcode');
     const goActiveSession = () => NavigationService.navigate('Session');
+    const goProducts = () => NavigationService.navigate('Products');
 
     return (
         <View style={styles.container}>
@@ -45,6 +46,22 @@ const Home: React.FC = () => {
                         <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>Active Sessions</Text>
                     </View>
                 </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => goProducts()}>
+                    <View style={{
+                        backgroundColor: '#6e65c0',
+                        width: 250,
+                        height: 50,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginTop: 5,
+                        borderRadius: 30,
+                        transform: [{ rotate: "-14deg" }]
+                    }}>
+                        <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>Katalog</Text>
+                    </View>
+                </TouchableOpacity>
+
 
                 <TouchableOpacity onPress={() => console.log("asd")}>
                     <View style={{
