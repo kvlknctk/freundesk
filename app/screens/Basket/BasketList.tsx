@@ -52,13 +52,12 @@ const BasketList: React.FC = () => {
                     )
                 }
 
-                <TouchableOpacity onPress={() => dropBasket()}>
-                    <View>
-                        <Text style={{color: 'white'}}>Clear Baskets</Text>
-                    </View>
-                </TouchableOpacity>
-
             </ScrollView>
+            <TouchableOpacity onPress={() => dropBasket()}>
+                <View>
+                    <Text style={{color: 'white'}}>Clear Baskets</Text>
+                </View>
+            </TouchableOpacity>
         </View>
     );
 };
