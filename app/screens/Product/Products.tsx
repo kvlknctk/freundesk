@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, Image, TouchableOpacity, StyleSheet, TextInput, Alert} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 //import styles from './styles';
 //import AppStyles from "../../config/styles";
 //import NavigationService from "../../../navigation/NavigationService";
@@ -10,6 +10,7 @@ import {useDispatch} from "react-redux";
 
 const Products: React.FC = () => {
 
+    // @ts-ignore
     const [products, setProducts] = useState([
         {
             id: '1',
@@ -30,27 +31,6 @@ const Products: React.FC = () => {
             name: 'Product 3 ',
             price: '3.9',
             description: 'Product description 1 ',
-            image: 'https://url.com/image.jpg'
-        },
-        {
-            id: '4',
-            name: 'Product 4',
-            price: '3.9',
-            description: 'Product description 4 ',
-            image: 'https://url.com/image.jpg'
-        },
-        {
-            id: '5',
-            name: 'Product 5',
-            price: '3.9',
-            description: 'Product description 4 ',
-            image: 'https://url.com/image.jpg'
-        },
-        {
-            id: '6',
-            name: 'Product 5',
-            price: '3.9',
-            description: 'Product description 4 ',
             image: 'https://url.com/image.jpg'
         }
     ])
@@ -106,7 +86,6 @@ const styles = StyleSheet.create({
 
     },
     preview: {},
-    volkan: {},
 });
 
 export default Products;
