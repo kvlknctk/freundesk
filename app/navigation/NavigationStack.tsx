@@ -16,6 +16,7 @@ import ReadBarcode from "../screens/Barcode/ReadBarcode";
 import BarcodeCompleted from "../screens/Barcode/BarcodeCompleted";
 import Products from "../screens/Product/Products";
 import BasketList from "../screens/Basket/BasketList";
+import Session from 'app/screens/Session/Session';
 
 const Stack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -73,6 +74,9 @@ const LoggedInNavigator = () => (
             // @ts-ignore
                       options={homeOptions}/>
         <Stack.Screen name="Basket" component={BasketList}
+            // @ts-ignore
+                      options={homeOptions}/>
+        <Stack.Screen name="Session" component={Session}
             // @ts-ignore
                       options={homeOptions}/>
         <Stack.Screen name="ReadBarcode" component={ReadBarcode}

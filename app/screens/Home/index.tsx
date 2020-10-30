@@ -11,6 +11,7 @@ const Home: React.FC = () => {
     const dispatch = useDispatch();
     const onLogout = () => dispatch(loginActions.logOut());
     const goBarcodeRead = () => NavigationService.navigate('ReadBarcode');
+    const goActiveSession = () => NavigationService.navigate('Session');
 
     return (
         <View style={styles.container}>
@@ -37,7 +38,7 @@ const Home: React.FC = () => {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => console.log("asd")}>
+                <TouchableOpacity onPress={() => goActiveSession()}>
                     <View style={{
                         backgroundColor: '#6e65c0',
                         width: 250,
