@@ -1,12 +1,18 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
-import {setIsDarkTheme} from "../../../store/actions/themeActions";
+//import {setIsDarkTheme} from "../../../store/actions/themeActions";
 import AppStyles from "../../../config/styles";
 import NavigationService from "../../../navigation/NavigationService";
+import {useSelector} from "react-redux";
 //import NavigationService from "../../../navigation/NavigationService";
 
+interface IStateSession {
+    sessionReducer: any;
+}
+
 const BarcodeCompleted: React.FC = () => {
+    const sessionStore = useSelector((state: IStateSession) => state.sessionReducer);
 
     return (
         <View style={styles.container}>
@@ -22,7 +28,7 @@ const BarcodeCompleted: React.FC = () => {
                 <Text style={{color: 'white', fontSize: 25, textAlign: 'center', marginTop: 10}}>Session Created, You
                     can order product or call server service.</Text>
                 <View style={{}}>
-                    <Text style={{color: 'white'}}>Your Desk No :  17 </Text>
+                    <Text style={{color: 'white'}}>Your Desk No : {sessionStore.qrcode} </Text>
                 </View>
                 <TouchableOpacity onPress={() => NavigationService.navigate('Products')}>
                     <View style={{

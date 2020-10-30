@@ -16,3 +16,6 @@ export const LOG_OUT = 'LOG_OUT';
 export const BASKET_ADD_PRODUCT = 'BASKET_ADD_PRODUCT';
 export const BASKET_REMOVE_PRODUCT = 'BASKET_REMOVE_PRODUCT';
 export const BASKET_DROP_BASKET = 'BASKET_DROP_BASKET';
+
+// sessions
+export const SESSION_CREATE = 'SESSION_CREATE';
