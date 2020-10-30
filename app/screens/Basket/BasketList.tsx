@@ -9,17 +9,16 @@ interface IStateBasket {
 }
 
 const BasketList: React.FC = () => {
-
-
     const dispatch = useDispatch();
-
     const addToBasket = (item: object) => dispatch(basketActions.basketAddProduct(item));
+    // @ts-ignore
     const removeToBasket = (index: object) => dispatch(basketActions.basketRemoveProduct(index));
     const dropBasket = () => dispatch(basketActions.basketDrop());
     const basketStore = useSelector((state: IStateBasket) => state.basketReducer);
 
     //const sumValues = (obj) => Object.keys(obj).reduce((acc, value) => acc + obj[value], 0);
     const sum = (key : any)  => {
+        // @ts-ignore
         return basketStore.addedProducts.reduce((a, b) => a + (b[key] || 0), 0);
     }
 

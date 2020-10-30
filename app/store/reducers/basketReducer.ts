@@ -27,6 +27,7 @@ export const basketReducer = createReducer(initialState, {
     [types.BASKET_REMOVE_PRODUCT](state: IProductState, action: IProductAction) {
         return {
             ...state,
+            // @ts-ignore
             addedProducts: state.addedProducts.filter((item: any, index: number) => index !== action.index),
         };
     },
