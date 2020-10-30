@@ -5,7 +5,8 @@ import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 //import NavigationService from "../../../navigation/NavigationService";
 //import {Button} from 'react-native-paper';
 //import * as basketActions from "../../store/actions/basketActions";
-import { useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import * as sessionActions from "../../store/actions/sessionActions";
 
 interface IStateSession {
     sessionReducer: any;
@@ -13,16 +14,22 @@ interface IStateSession {
 const Session: React.FC = () => {
 
 
-    //const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const sessionStore = useSelector((state: IStateSession) => state.sessionReducer);
-    //const addToBasket = (item: object) => console.log(item);
+    //const discardDesk = (item: object) => console.log(item);
+    const discardDesk = () => dispatch(sessionActions.discardDesk());
 
     return (
         <View style={styles.container}>
             <Text style={{color:'white'}}>
+                Desk Title :
                 {sessionStore.qrcode}
             </Text>
+
+            <TouchableOpacity onPress={() => discardDesk()} >
+                <Text style={{color: 'white', fontSize: 35}}>Discard Desk</Text>
+            </TouchableOpacity>
         </View>
     );
 };

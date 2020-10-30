@@ -24,5 +24,12 @@ export const sessionReducer = createReducer(initialState, {
             qrcode: action.qrcode,
             desk: action.desk,
         };
+    },
+    [types.DISCARD_DESK](state: ISessionState) {
+        return {
+            ...state,
+            qrcode: '',
+            desk: {},
+        };
     }
 });

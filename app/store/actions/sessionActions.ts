@@ -7,3 +7,9 @@ export function readDeskBarcode(qrcode: string, desk: object) {
         desk
     };
 }
+
+export function discardDesk() {
+    return {
+        type: types.DISCARD_DESK
+    };
+}
