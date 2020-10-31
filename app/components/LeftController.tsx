@@ -11,12 +11,12 @@ interface IState {
 
 const LeftController: React.FC = () => {
     const isDark = useSelector((state: IState) => state.themeReducer.isDark);
-    const goBasket = () => NavigationService.navigate('Home');
+    const goHome = () => NavigationService.navigate('Home');
     const iconColor = isDark ? 'white' : 'black';
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}} onPress={goBasket}>
+            <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center'}} onPress={goHome}>
                 <Icon name="home" size={25} style={styles.icon} color={iconColor}/>
             </TouchableOpacity>
         </View>
