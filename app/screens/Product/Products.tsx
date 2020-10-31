@@ -1,9 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-//import styles from './styles';
-//import AppStyles from "../../config/styles";
-//import NavigationService from "../../../navigation/NavigationService";
-//import {Button} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as basketActions from "../../store/actions/basketActions";
 import * as productActions from "../../store/actions/productActions";
@@ -27,7 +23,6 @@ const Products: React.FC = () => {
 
     useEffect(() => {
         getProductList();
-
     }, []);
 
     return (
