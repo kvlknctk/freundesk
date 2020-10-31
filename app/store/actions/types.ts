@@ -20,3 +20,6 @@ export const BASKET_DROP_BASKET = 'BASKET_DROP_BASKET';
 // sessions
 export const SESSION_CREATE = 'SESSION_CREATE';
 export const DISCARD_DESK = 'DISCARD_DESK';
+
+// products
+export const PRODUCTS_GET = 'PRODUCTS_GET';

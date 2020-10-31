@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 //import styles from './styles';
 //import AppStyles from "../../config/styles";
@@ -6,50 +6,41 @@ import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 //import {Button} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as basketActions from "../../store/actions/basketActions";
-import {useDispatch} from "react-redux";
+import * as productActions from "../../store/actions/productActions";
+import {useDispatch, useSelector} from "react-redux";
+import productList from "../../services/productApi";
 
 const Products: React.FC = () => {
 
     // @ts-ignore
-    const [products, setProducts] = useState([
-        {
-            id: '1',
-            name: 'Product 1 ',
-            price: '3.9',
-            description: 'Product description 1 ',
-            image: 'https://url.com/image.jpg'
-        },
-        {
-            id: '2',
-            name: 'Product 2 ',
-            price: '3.9',
-            description: 'Product description 1 ',
-            image: 'https://url.com/image.jpg'
-        },
-        {
-            id: '3',
-            name: 'Product 3 ',
-            price: '3.9',
-            description: 'Product description 1 ',
-            image: 'https://url.com/image.jpg'
-        }
-    ])
     const dispatch = useDispatch();
 
     const addToBasket = (item: object) => dispatch(basketActions.basketAddProduct(item));
-    //const addToBasket = (item: object) => console.log(item);
+    const getProductList = () => {
+        productList()
+            .then(res => res.data.products.results)
+            .then(r => {
+                dispatch(productActions.getProducts(r))
+            })
+    };
+    const productStore = useSelector((state: any) => state.productReducer);
+
+    useEffect(() => {
+        getProductList();
+
+    }, []);
 
     return (
         <View style={styles.container}>
             {
-                products.map((item) => (
+                productStore.products.map((item) => (
                         <TouchableOpacity key={item.id} onPress={() => addToBasket(item)}>
                             <View style={styles.productItem}>
                                 <View style={{flexDirection: 'row'}}>
                                     <View style={{backgroundColor: 'white', width: 50, height: 50, borderRadius: 5}}/>
                                     <View style={{padding: 5}}>
                                         <Text style={{color: 'white'}}>{item.name}</Text>
-                                        <Text style={{color: 'white'}}>{item.description}</Text>
+                                        <Text style={{color: 'white'}}>{item.price}</Text>
                                     </View>
                                 </View>
                                 <View style={{justifyContent: 'center'}}>

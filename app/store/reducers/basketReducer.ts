@@ -4,9 +4,9 @@
  */
 import createReducer from 'app/lib/createReducer';
 import * as types from 'app/store/actions/types';
-import {IProductState} from 'app/models/reducers/product';
+import {IBasketState} from 'app/models/reducers/product';
 
-const initialState: IProductState = {
+const initialState: IBasketState = {
     addedProducts: [],
     total : 0
 };
@@ -16,7 +16,7 @@ interface IProductAction {
 }
 
 export const basketReducer = createReducer(initialState, {
-    [types.BASKET_ADD_PRODUCT](state: IProductState, action: any) {
+    [types.BASKET_ADD_PRODUCT](state: IBasketState, action: any) {
         //console.log(types.BASKET_ADD_PRODUCT, action)
         return {
             ...state,
@@ -24,14 +24,14 @@ export const basketReducer = createReducer(initialState, {
             total : state.total + action.product.price
         };
     },
-    [types.BASKET_REMOVE_PRODUCT](state: IProductState, action: IProductAction) {
+    [types.BASKET_REMOVE_PRODUCT](state: IBasketState, action: IProductAction) {
         return {
             ...state,
             // @ts-ignore
             addedProducts: state.addedProducts.filter((item: any, index: number) => index !== action.index),
         };
     },
-    [types.BASKET_DROP_BASKET](state: IProductState) {
+    [types.BASKET_DROP_BASKET](state: IBasketState) {
         return {
             ...state,
             addedProducts: [],
