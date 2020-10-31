@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import React, {useEffect} from 'react';
+import {View, Text, Image, TouchableOpacity, LogBox} from 'react-native';
 import styles from './styles';
 import NavigationService from "../../navigation/NavigationService";
 import * as loginActions from "../../store/actions/loginActions"
@@ -11,6 +11,10 @@ const Home: React.FC = () => {
     const goActiveSession = () => NavigationService.navigate('Session');
     const goProducts = () => NavigationService.navigate('Products');
     const logout = () => dispatch(loginActions.logOut());
+
+    useEffect(() => {
+        LogBox.ignoreLogs(['Remote debugger']);
+    }, []);
 
     return (
         <View style={styles.container}>

@@ -24,9 +24,7 @@ const BasketList: React.FC = () => {
 
     return (
         <View>
-            <Text>{
-                sum
-            }</Text>
+
             <ScrollView style={styles.container}>
                 {
                     //@ts-ignore

@@ -27,6 +27,7 @@ export default function* loginAsync() {
     };
 
     if (response.success) {
+        console.log("saga success çalıştı")
         yield put(loginActions.onLoginResponse(response.data));
         yield put(loginActions.disableLoader());
 
