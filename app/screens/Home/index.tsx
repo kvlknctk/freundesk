@@ -2,11 +2,15 @@ import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import NavigationService from "../../navigation/NavigationService";
+import * as loginActions from "../../store/actions/loginActions"
+import {useDispatch} from "react-redux";
 
 const Home: React.FC = () => {
+    const dispatch = useDispatch();
     const goBarcodeRead = () => NavigationService.navigate('ReadBarcode');
     const goActiveSession = () => NavigationService.navigate('Session');
     const goProducts = () => NavigationService.navigate('Products');
+    const logout = () => dispatch(loginActions.logOut());
 
     return (
         <View style={styles.container}>
@@ -25,7 +29,7 @@ const Home: React.FC = () => {
                         justifyContent: 'center',
                         alignItems: 'center',
                         borderRadius: 30,
-                        transform: [{ rotate: "-14deg" }]
+                        transform: [{rotate: "-14deg"}]
                     }}>
                         <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>Read QR Barcode</Text>
                     </View>
@@ -40,7 +44,7 @@ const Home: React.FC = () => {
                         alignItems: 'center',
                         marginTop: 5,
                         borderRadius: 30,
-                        transform: [{ rotate: "-14deg" }]
+                        transform: [{rotate: "-14deg"}]
 
                     }}>
                         <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>Active Sessions</Text>
@@ -56,7 +60,7 @@ const Home: React.FC = () => {
                         alignItems: 'center',
                         marginTop: 5,
                         borderRadius: 30,
-                        transform: [{ rotate: "-14deg" }]
+                        transform: [{rotate: "-14deg"}]
                     }}>
                         <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>Katalog</Text>
                     </View>
@@ -72,7 +76,7 @@ const Home: React.FC = () => {
                         alignItems: 'center',
                         marginTop: 5,
                         borderRadius: 30,
-                        transform: [{ rotate: "-14deg" }]
+                        transform: [{rotate: "-14deg"}]
                     }}>
                         <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>My Orders</Text>
                     </View>
@@ -87,18 +91,26 @@ const Home: React.FC = () => {
                         justifyContent: 'center',
                         alignItems: 'center',
                         borderRadius: 30,
-                        transform: [{ rotate: "-14deg" }]
+                        transform: [{rotate: "-14deg"}]
                     }}>
                         <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>Profile</Text>
                     </View>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={() => logout()}>
+                    <View style={{
+                        backgroundColor: '#8c1b1b',
+                        width: 250,
+                        height: 50,
+                        marginTop: 5,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        borderRadius: 30,
+                        transform: [{rotate: "-14deg"}]
+                    }}>
+                        <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>Logout</Text>
+                    </View>
+                </TouchableOpacity>
 
-             {/*   <Button icon="login" mode="outlined" onPress={goBarcodeRead}>
-                    Notifications
-                </Button>
-                <Button icon="logout" mode="outlined" onPress={onLogout}>
-                    Çıkış
-                </Button>*/}
             </View>
         </View>
     );
