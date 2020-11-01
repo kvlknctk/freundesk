@@ -3,7 +3,6 @@ import {View, Text, TouchableOpacity, StyleSheet, ScrollView} from 'react-native
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as basketActions from "../../store/actions/basketActions";
 import {useDispatch, useSelector} from "react-redux";
-import {basketDrop} from "../../store/actions/basketActions";
 
 interface IStateBasket {
     basketReducer: any;
@@ -89,11 +88,6 @@ const BasketList: React.FC = () => {
 
                     </View>
 
-                    {/* <TouchableOpacity onPress={() => dropBasket()}>
-                    <View style={{padding: 5}}>
-                        <Text style={{color: 'white', fontSize: 25}}>Clear Baskets</Text>
-                    </View>
-                </TouchableOpacity>*/}
                 </View>
 
             }
@@ -104,9 +98,6 @@ const BasketList: React.FC = () => {
 
 const styles = StyleSheet.create({
     container: {
-        //flex: 1,
-        //justifyContent: 'center',
-        //alignItems: 'center',
     },
     login: {
         padding: 8
