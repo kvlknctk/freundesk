@@ -41,7 +41,7 @@ const Home: React.FC = () => {
                                     borderRadius: 30,
                                     transform: [{rotate: "-14deg"}]
                                 }}>
-                                    <Text style={{color: 'black', fontSize: 25, fontWeight: 'bold'}}>Active Sessions</Text>
+                                    <Text style={{color: 'black', fontSize: 25, fontWeight: 'bold'}}>Active Session</Text>
                                 </View>
                             </TouchableOpacity> :
                             <TouchableOpacity onPress={() => goBarcodeRead()}>

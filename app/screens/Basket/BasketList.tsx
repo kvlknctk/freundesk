@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, ScrollView} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as basketActions from "../../store/actions/basketActions";
@@ -16,14 +16,16 @@ const BasketList: React.FC = () => {
     const dropBasket = () => dispatch(basketActions.basketDrop());
     const basketStore = useSelector((state: IStateBasket) => state.basketReducer);
 
-    //const sumValues = (obj) => Object.keys(obj).reduce((acc, value) => acc + obj[value], 0);
-    const sum = (key: any) => {
-        // @ts-ignore
-        return basketStore.addedProducts.reduce((a, b) => a + (b[key] || 0), 0);
-    }
+    const reducerf = (accumulator, currentValue) => accumulator + parseFloat(currentValue.price);
+    const sumBasket = (addedProducts: object) => addedProducts.reduce(reducerf, 0);
+
+
+    useEffect(() => {
+        console.log(sumBasket(basketStore.addedProducts));
+    }, [])
 
     return (
-        <View>
+        <View style={{flexDirection: 'column', justifyContent: 'space-between', flex: 1}}>
 
             <ScrollView style={styles.container}>
                 {
@@ -32,15 +34,19 @@ const BasketList: React.FC = () => {
                             <TouchableOpacity key={index} onPress={() => addToBasket(item)}>
                                 <View style={styles.productItem}>
                                     <View style={{}}>
-                                        <View style={{padding: 3, flexDirection: 'row'}}>
+                                        <View style={{padding: 3, flexDirection: 'column'}}>
                                             <Text style={{color: 'white'}}>{item.name}</Text>
-                                            <Text style={{color: 'white'}}>{item.price}</Text>
+                                            <Text style={{color: 'white'}}>General Category</Text>
                                         </View>
                                     </View>
-                                    <TouchableOpacity style={{justifyContent: 'center'}}
-                                                      onPress={() => removeToBasket(index)}>
-                                        <Ionicons name="trash" size={20} color="white"/>
-                                    </TouchableOpacity>
+                                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                                        <Text style={{color: 'white', padding: 3}}>{item.price}£</Text>
+
+                                        <TouchableOpacity style={{justifyContent: 'center'}}
+                                                          onPress={() => removeToBasket(index)}>
+                                            <Ionicons name="trash" size={20} color="white"/>
+                                        </TouchableOpacity>
+                                    </View>
                                 </View>
                             </TouchableOpacity>
                         )
@@ -48,11 +54,42 @@ const BasketList: React.FC = () => {
                 }
 
             </ScrollView>
-            <TouchableOpacity onPress={() => dropBasket()}>
-                <View style={{padding: 5}}>
-                    <Text style={{color: 'white', fontSize: 25}}>Clear Baskets</Text>
+
+            <View>
+                <View style={{ flexDirection: 'column'}}>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between', marginTop: 20}}>
+                        <Text style={{color: 'white', fontSize: 30, fontWeight: 'bold'}}>Total</Text>
+                        <Text style={{color: 'white', fontSize: 30, fontWeight: 'bold'}}>
+                            {
+                                sumBasket(basketStore.addedProducts).toFixed(2)
+                            } £
+                        </Text>
+                    </View>
+
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                        <Text style={{color: 'white', fontSize: 30}}>Estimated</Text>
+                        <Text style={{color: 'white', fontSize: 30}}>
+                            21 Min
+                        </Text>
+                    </View>
+
+                    <TouchableOpacity
+                        style={{justifyContent: 'center'}}
+                        onPress={() => console.log("asd")}>
+                        <View style={{height: 50, backgroundColor: 'aquamarine'}}>
+                            <Text style={{color: 'black', textAlign: 'center', fontSize: 30}}>Order Now</Text>
+                        </View>
+                    </TouchableOpacity>
+
                 </View>
-            </TouchableOpacity>
+
+                {/* <TouchableOpacity onPress={() => dropBasket()}>
+                    <View style={{padding: 5}}>
+                        <Text style={{color: 'white', fontSize: 25}}>Clear Baskets</Text>
+                    </View>
+                </TouchableOpacity>*/}
+            </View>
+
         </View>
     );
 };
