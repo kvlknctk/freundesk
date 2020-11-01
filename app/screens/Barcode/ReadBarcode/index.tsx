@@ -1,13 +1,22 @@
 import React, {useState} from 'react';
-import {View, Text, Alert, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import styles from './styles';
 import NavigationService from "../../../navigation/NavigationService";
+import * as sessionActions from "../../../store/actions/sessionActions";
+import {useDispatch} from "react-redux";
 
 const ReadBarcode: React.FC = () => {
     const [read, setRead] = useState(false);
-    const readedBarcode = (e) => {
-        NavigationService.navigate('BarcodeCompleted')
+    const dispatch = useDispatch();
+
+    /* const readedBarcode = (e) => {
+         NavigationService.navigate('BarcodeCompleted')
+         setRead(true);
+     };*/
+    const readedBarcode = (item: any) => {
+        NavigationService.navigate('BarcodeCompleted');
+        dispatch(sessionActions.readDeskBarcode(item.qrcode, {}));
         setRead(true);
     };
 
@@ -49,7 +58,7 @@ const ReadBarcode: React.FC = () => {
                     </RNCamera>
                 }
                 <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                    <TouchableOpacity onPress={() => readedBarcode('asd')}>
+                    <TouchableOpacity onPress={() => readedBarcode({qrcode: 'masa1', desk: {title: 'MASA 1'}})}>
                         <View style={{padding: 20, marginTop: 10}}>
                             <Text style={{color: 'white', fontSize: 20}}>Simulation</Text>
                         </View>

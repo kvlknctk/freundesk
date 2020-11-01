@@ -15,6 +15,9 @@ import {ILoginState} from 'app/models/reducers/login';
 import ReadBarcode from "../screens/Barcode/ReadBarcode";
 import BarcodeCompleted from "../screens/Barcode/BarcodeCompleted";
 import Products from "../screens/Product/Products";
+import BasketList from "../screens/Basket/BasketList";
+import Session from 'app/screens/Session/Session';
+import LeftController from "../components/LeftController";
 
 const Stack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -25,6 +28,7 @@ const homeOptions = {
     headerTitleStyle: {
         fontWeight: 'bold',
     },
+    headerLeft: () => <LeftController/>,
     headerRight: () => <ThemeController/>,
 };
 
@@ -69,6 +73,12 @@ const AuthNavigator = () => {
 const LoggedInNavigator = () => (
     <LoggedInStack.Navigator>
         <Stack.Screen name="Home" component={Home}
+            // @ts-ignore
+                      options={homeOptions}/>
+        <Stack.Screen name="Basket" component={BasketList}
+            // @ts-ignore
+                      options={homeOptions}/>
+        <Stack.Screen name="Session" component={Session}
             // @ts-ignore
                       options={homeOptions}/>
         <Stack.Screen name="ReadBarcode" component={ReadBarcode}

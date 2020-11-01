@@ -1,16 +1,23 @@
-import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
-import {Button} from 'react-native-paper';
-
-import {useDispatch} from 'react-redux';
-import * as loginActions from 'app/store/actions/loginActions';
+import React, {useEffect} from 'react';
+import {View, Text, Image, TouchableOpacity, LogBox} from 'react-native';
 import styles from './styles';
 import NavigationService from "../../navigation/NavigationService";
+import * as loginActions from "../../store/actions/loginActions"
+import {useDispatch, useSelector} from "react-redux";
 
 const Home: React.FC = () => {
     const dispatch = useDispatch();
-    const onLogout = () => dispatch(loginActions.logOut());
     const goBarcodeRead = () => NavigationService.navigate('ReadBarcode');
+    const goActiveSession = () => NavigationService.navigate('Session');
+    const goProducts = () => NavigationService.navigate('Products');
+    const logout = () => dispatch(loginActions.logOut());
+    const loginStore = useSelector((state: any) => state.loginReducer);
+    const seanceStore = useSelector((state: any) => state.sessionReducer);
+
+
+    useEffect(() => {
+        LogBox.ignoreLogs(['Remote debugger']);
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -19,76 +26,114 @@ const Home: React.FC = () => {
                        width: 300,
                        height: 200,
                        marginTop: 30
-                       //borderWidth: 1,
-                       //borderColor: 'white'
                    }}/>
-            <View style={{alignItems: 'flex-start', marginTop: 15}}>
-                <TouchableOpacity onPress={() => goBarcodeRead()}>
-                    <View style={{
-                        backgroundColor: '#6e65c0',
-                        width: 250,
-                        height: 50,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        borderRadius: 30,
-                        transform: [{ rotate: "-14deg" }]
-                    }}>
-                        <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>Read QR Barcode</Text>
-                    </View>
-                </TouchableOpacity>
+            <View style={{alignItems: 'flex-start', marginTop: 15,}}>
+                <View>
+                    {
+                        seanceStore.qrcode ? <TouchableOpacity onPress={() => goActiveSession()}>
+                                <View style={{
+                                    backgroundColor: 'aquamarine',
+                                    width: 250,
+                                    height: 50,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    marginTop: 5,
+                                    borderRadius: 30,
+                                    transform: [{rotate: "-14deg"}]
+                                }}>
+                                    <Text style={{color: 'black', fontSize: 25, fontWeight: 'bold'}}>Active Session</Text>
+                                </View>
+                            </TouchableOpacity> :
+                            <TouchableOpacity onPress={() => goBarcodeRead()}>
+                                <View style={{
+                                    backgroundColor: '#6e65c0',
+                                    width: 250,
+                                    height: 50,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    borderRadius: 30,
+                                    transform: [{rotate: "-14deg"}]
+                                }}>
+                                    <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>Read QR
+                                        Barcode</Text>
+                                </View>
+                            </TouchableOpacity>
+                    }
 
-                <TouchableOpacity onPress={() => console.log("asd")}>
-                    <View style={{
-                        backgroundColor: '#6e65c0',
-                        width: 250,
-                        height: 50,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        marginTop: 5,
-                        borderRadius: 30,
-                        transform: [{ rotate: "-14deg" }]
 
-                    }}>
-                        <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>Active Sessions</Text>
-                    </View>
-                </TouchableOpacity>
+                    <TouchableOpacity onPress={() => goProducts()}>
+                        <View style={{
+                            backgroundColor: '#6e65c0',
+                            width: 250,
+                            height: 50,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            marginTop: 5,
+                            borderRadius: 30,
+                            transform: [{rotate: "-14deg"}]
+                        }}>
+                            <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>Katalog</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => console.log("asd")}>
+                        <View style={{
+                            backgroundColor: '#6e65c0',
+                            width: 250,
+                            height: 50,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            marginTop: 5,
+                            borderRadius: 30,
+                            transform: [{rotate: "-14deg"}]
+                        }}>
+                            <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>My Orders</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => console.log("asd")}>
+                        <View style={{
+                            backgroundColor: '#6e65c0',
+                            width: 250,
+                            height: 50,
+                            marginTop: 5,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: 30,
+                            transform: [{rotate: "-14deg"}]
+                        }}>
+                            <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>Profile</Text>
+                        </View>
+                    </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => console.log("asd")}>
-                    <View style={{
-                        backgroundColor: '#6e65c0',
-                        width: 250,
-                        height: 50,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        marginTop: 5,
-                        borderRadius: 30,
-                        transform: [{ rotate: "-14deg" }]
-                    }}>
-                        <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>My Orders</Text>
-                    </View>
-                </TouchableOpacity>
+                    {
+                        loginStore.isLoggedIn && <TouchableOpacity onPress={() => logout()}>
+                            <View style={{
+                                backgroundColor: '#8c1b1b',
+                                width: 250,
+                                height: 50,
+                                marginTop: 5,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderRadius: 30,
+                                transform: [{rotate: "-14deg"}]
+                            }}>
+                                <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>Logout</Text>
+                            </View>
+                        </TouchableOpacity>
+                    }
 
-                <TouchableOpacity onPress={() => console.log("asd")}>
-                    <View style={{
-                        backgroundColor: '#6e65c0',
-                        width: 250,
-                        height: 50,
-                        marginTop: 5,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        borderRadius: 30,
-                        transform: [{ rotate: "-14deg" }]
-                    }}>
-                        <Text style={{color: 'white', fontSize: 25, fontWeight: 'bold'}}>Profile</Text>
-                    </View>
-                </TouchableOpacity>
 
-             {/*   <Button icon="login" mode="outlined" onPress={goBarcodeRead}>
-                    Notifications
-                </Button>
-                <Button icon="logout" mode="outlined" onPress={onLogout}>
-                    Çıkış
-                </Button>*/}
+                </View>
+
+                <View style={{
+                    backgroundColor: '#6e65c0',
+                    flex: 1,
+                    width: 250,
+                    marginTop: 100,
+                    borderRadius: 25
+                }}>
+                    {/*<Text>alt</Text>*/}
+                </View>
+
             </View>
         </View>
     );
