@@ -19,11 +19,6 @@ const BasketList: React.FC = () => {
     const reducerf = (accumulator, currentValue) => accumulator + parseFloat(currentValue.price);
     const sumBasket = (addedProducts: object) => addedProducts.reduce(reducerf, 0);
 
-
-    useEffect(() => {
-        console.log(sumBasket(basketStore.addedProducts));
-    }, [])
-
     return (
         <View style={{flexDirection: 'column', justifyContent: 'space-between', flex: 1}}>
 
