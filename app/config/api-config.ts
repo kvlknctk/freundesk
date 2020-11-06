@@ -7,7 +7,7 @@ const ApiConfig = {
   // Products
   PRODUCTS: 'v1/products',
 
-  // Session test
+  // Session test 2
   SESSION_CREATE: 'v1/sessions'
 };
 
