@@ -11,7 +11,7 @@ const initialState: IProductState = {
 };
 
 export const productReducer = createReducer(initialState, {
-    [types.PRODUCTS_GET](state: IProductState, action) {
+    [types.PRODUCTS_GET](state: IProductState, action: any) {
         //console.log(types.BASKET_ADD_PRODUCT, action)
         return {
             ...state,
