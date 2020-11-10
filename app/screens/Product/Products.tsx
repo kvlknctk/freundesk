@@ -33,12 +33,11 @@ const Products: React.FC = () => {
                                     <View style={{backgroundColor: 'white', width: 50, height: 50, borderRadius: 5}}/>
                                     <View style={{padding: 5}}>
                                         <Text style={{color: 'white'}}>{item.name}</Text>
-                                        <Text style={{color: 'white'}}>{item.price}</Text>
+                                        <Text style={{color: 'white'}}>{item.category.name}</Text>
                                     </View>
                                 </View>
                                 <View style={{justifyContent: 'center'}}>
-                                    <Ionicons name="arrow-up" size={20} color="white"/>
-                                    <Ionicons name="arrow-down" size={20} color="white"/>
+                                    <Text style={{color: 'white'}}>{item.price} €</Text>
                                 </View>
                             </View>
                         </TouchableOpacity>
