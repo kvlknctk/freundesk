@@ -1,13 +1,13 @@
 import React from 'react';
 import {Image, KeyboardAvoidingView, View, Keyboard, TouchableWithoutFeedback} from 'react-native';
-import {Text, Button, TextInput} from 'react-native-paper';
+import {Button, TextInput} from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 
-import * as loginActions from 'app/store/actions/loginActions';
+//import * as loginActions from 'app/store/actions/loginActions';
+// @ts-ignore
 import styles from './styles';
 import {ILoginState} from 'app/models/reducers/login';
 import NavigationService from 'app/navigation/NavigationService';
-import {BaseButton} from "react-native-gesture-handler";
 
 interface IState {
     loginReducer: ILoginState;
@@ -16,9 +16,7 @@ interface IState {
 const Register: React.FC = () => {
     const id = useSelector((state: IState) => state.loginReducer.id);
     const dispatch = useDispatch();
-    const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
-    const onForgot = () => NavigationService.navigate('ForgotPassword');
-    const onRegister = () => NavigationService.navigate('Register');
+    //const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
     return (
         <KeyboardAvoidingView>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
