@@ -34,7 +34,7 @@ const BasketList: React.FC = () => {
                 {
                     //@ts-ignore
                     basketStore.addedProducts.map((item, index) => (
-                            <TouchableOpacity key={index} onPress={() => addToBasket(item)}>
+                            <TouchableOpacity key={index} onPress={() => console.log(item)}>
                                 <View style={styles.productItem}>
                                     <View style={{}}>
                                         <View style={{padding: 3, flexDirection: 'column'}}>
@@ -43,7 +43,7 @@ const BasketList: React.FC = () => {
                                         </View>
                                     </View>
                                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                                        <Text style={{color: 'white', padding: 3}}>{item.price}£</Text>
+                                        <Text style={{color: 'white', padding: 3}}>{item.price} £</Text>
 
                                         <TouchableOpacity style={{justifyContent: 'center'}}
                                                           onPress={() => removeToBasket(index)}>
