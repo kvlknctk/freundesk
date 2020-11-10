@@ -23,7 +23,6 @@ const BasketList: React.FC = () => {
     if  (basketStore.addedProducts.length === 0){
         return <View style={{alignItems: 'center', justifyContent: "center", flex: 1}}>
             <Text style={{color: 'white', fontSize: 20}}>You didn't add product.</Text>
-
         </View>
     }
 
@@ -36,14 +35,14 @@ const BasketList: React.FC = () => {
                     basketStore.addedProducts.map((item, index) => (
                             <TouchableOpacity key={index} onPress={() => console.log(item)}>
                                 <View style={styles.productItem}>
-                                    <View style={{}}>
+                                    <View>
                                         <View style={{padding: 3, flexDirection: 'column'}}>
                                             <Text style={{color: 'white'}}>{item.name}</Text>
                                             <Text style={{color: 'white'}}>General Category</Text>
                                         </View>
                                     </View>
                                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                                        <Text style={{color: 'white', padding: 3}}>{item.price} £</Text>
+                                        <Text style={{color: 'white', padding: 3}}>{item.price} €</Text>
 
                                         <TouchableOpacity style={{justifyContent: 'center'}}
                                                           onPress={() => removeToBasket(index)}>
@@ -67,7 +66,7 @@ const BasketList: React.FC = () => {
                             <Text style={{color: 'white', fontSize: 30, fontWeight: 'bold'}}>
                                 {
                                     sumBasket(basketStore.addedProducts).toFixed(2)
-                                } £
+                                } €
                             </Text>
                         </View>
 
