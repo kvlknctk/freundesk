@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as basketActions from "../../store/actions/basketActions";
@@ -28,7 +28,7 @@ const Products: React.FC = () => {
     return (
         <View style={styles.container}>
             {
-                productStore.products.map((item) => (
+                productStore.products.map((item: any) => (
                         <TouchableOpacity key={item.id} onPress={() => addToBasket(item)}>
                             <View style={styles.productItem}>
                                 <View style={{flexDirection: 'row'}}>
