@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, ScrollView} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import * as basketActions from "../../store/actions/basketActions";
 import * as productActions from "../../store/actions/productActions";
@@ -24,7 +24,7 @@ const Products: React.FC = () => {
     }, []);
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             {
                 productStore.products.map((item: any) => (
                         <TouchableOpacity key={item.id} onPress={() => addToBasket(item)}>
@@ -46,7 +46,7 @@ const Products: React.FC = () => {
                 )
             }
 
-        </View>
+        </ScrollView>
     );
 };
 
