@@ -32,12 +32,6 @@ export const basketReducer = createReducer(initialState, {
         };
     },
     [types.BASKET_REMOVE_PRODUCT](state: IBasketState, action: IProductAction) {
-        Toast.show({
-            text2: `Removed from your card.`,
-            bottomOffset: 40,
-            type: 'info',
-            position: 'bottom',
-        });
         return {
             ...state,
             // @ts-ignore
