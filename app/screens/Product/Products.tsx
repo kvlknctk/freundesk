@@ -12,17 +12,15 @@ const Products: React.FC = () => {
     const dispatch = useDispatch();
 
     const addToBasket = (item: object) => dispatch(basketActions.basketAddProduct(item));
-    const getProductList = () => {
-        productList()
-            .then(res => res.data.products.results)
-            .then(r => {
-                dispatch(productActions.getProducts(r))
-            })
-    };
+
     const productStore = useSelector((state: any) => state.productReducer);
 
     useEffect(() => {
-        getProductList();
+          productList()
+              .then(res => res.data.products.results)
+              .then(r => {
+                  dispatch(productActions.getProducts(r))
+              })
     }, []);
 
     return (
