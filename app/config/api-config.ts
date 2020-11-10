@@ -5,7 +5,7 @@ const ApiConfig = {
   LOGIN: 'api/login',
 
   // Products
-  PRODUCTS: 'v1/products',
+  PRODUCTS: 'v1/products?relation=category',
 
   // Session
   SESSION_CREATE: 'v1/sessions'
