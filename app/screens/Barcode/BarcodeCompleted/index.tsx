@@ -22,15 +22,13 @@ const BarcodeCompleted: React.FC = () => {
                            width: 120,
                            height: 150,
                            marginTop: 10
-                           //borderWidth: 1,
-                           //borderColor: 'white'
                        }}/>
                 <Text style={{color: 'white', fontSize: 25, textAlign: 'center', marginTop: 10}}>Session Created, You
                     can order product or call server service.</Text>
                 <View style={{}}>
                     <Text style={{color: 'white'}}>Your Desk No : {sessionStore.qrcode} </Text>
                 </View>
-                <TouchableOpacity onPress={() => NavigationService.navigate('Products')}>
+                <TouchableOpacity onPress={() => NavigationService.navigate('Session')}>
                     <View style={{
                         backgroundColor: AppStyles.color.COLOR_PRIMARY,
                         padding: 10,
