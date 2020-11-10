@@ -7,6 +7,7 @@ import {navigationRef} from './NavigationService';
 
 import Login from 'app/screens/Login';
 import Home from 'app/screens/Home';
+import Register from 'app/screens/Register';
 import ForgotPassword from 'app/screens/ForgotPassword';
 
 import ThemeController from '../components/ThemeController';
@@ -56,6 +57,18 @@ const AuthNavigator = () => {
                     headerRight: () => <ThemeController/>,
                 }}
             />
+
+            <Stack.Screen
+                name="Register"
+                component={Register}
+                options={{
+                    // When logging out, a pop animation feels intuitive
+                    // You can remove this if you want the default 'push' animation
+                    animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
+                    headerRight: () => <ThemeController/>,
+                }}
+            />
+
             <Stack.Screen
                 name="ForgotPassword"
                 component={ForgotPassword}
