@@ -17,19 +17,27 @@ const Login: React.FC = () => {
     const dispatch = useDispatch();
     const onLogin = () => dispatch(loginActions.requestLogin('test', '1234'));
     const onForgot = () => NavigationService.navigate('ForgotPassword');
+    const onRegister = () => NavigationService.navigate('Register');
     return (
         <View style={styles.container}>
             <View style={styles.container}>
                 <Text style={styles.login}>Durum bilgisi : {id}</Text>
                 <Button icon="login" mode="outlined" onPress={onLogin}>
-                    Giriş
+                    Auto Login
                 </Button>
                 <Button
                     mode="text"
                     style={styles.forgot}
                     labelStyle={styles.labelStyle}
                     onPress={onForgot}>
-                    Şifremi Unuttum
+                    Forgot Password
+                </Button>
+                <Button
+                    mode="text"
+                    style={styles.forgot}
+                    labelStyle={styles.labelStyle}
+                    onPress={onRegister}>
+                    Register
                 </Button>
             </View>
         </View>
