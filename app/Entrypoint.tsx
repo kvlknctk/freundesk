@@ -6,6 +6,8 @@ import React from 'react';
 import { ActivityIndicator } from 'react-native';
 import { Provider, useSelector } from 'react-redux';
 import { PersistGate } from 'redux-persist/es/integration/react';
+import Toast from 'react-native-toast-message';
+
 import {
   DarkTheme as PaperDarkTheme,
   DefaultTheme as PaperDefaultTheme,
@@ -43,6 +45,7 @@ const RootNavigation: React.FC = () => {
   return (
     <PaperProvider theme={paperTheme}>
       <Navigator theme={combinedTheme} />
+      <Toast ref={(ref) => Toast.setRef(ref)} />
     </PaperProvider>
   );
 };
