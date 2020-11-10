@@ -7,7 +7,7 @@ import * as types from 'app/store/actions/types';
 import {IProductState} from 'app/models/reducers/product';
 
 const initialState: IProductState = {
-    products: {}
+    products: []
 };
 
 export const productReducer = createReducer(initialState, {
